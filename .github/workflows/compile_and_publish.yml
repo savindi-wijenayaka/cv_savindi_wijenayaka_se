@@ -37,9 +37,6 @@ jobs:
           - name: savindi-wijenayaka/savindi-wijenayaka.github.io
             path: public-repo
             secret_name: REPO_WRITE_ACCESS
-          - name: savindi-wijenayaka/savindi-wijenayaka-v2.github.io
-            path: private-repo
-            secret_name: REPO_WRITE_ACCESS
 
     name: Add and commit to the given repository
     runs-on: ubuntu-latest
@@ -67,5 +64,5 @@ jobs:
         git config --global user.name 'workflow-bot'
         git config --global user.email 'workflow-bot@savindi-wijenayaka.github.io'
         git add public/${{ vars.SAVING_FILENAME }}.pdf
-        git commit -m "Update CV"
+        git commit -m "Update CV for SE"
         git push
