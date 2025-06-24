@@ -1,0 +1,71 @@
+name: Compile and publish LaTeX document
+on: 
+  push:
+    branches:
+      - 'main'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  compile_latex:
+    name: Compile latex to pdf
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v4
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v3
+        with:
+          pre_compile: "tlmgr update --self && tlmgr update pdfx"
+          root_file: main.tex
+          args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode -jobname=${{ vars.SAVING_FILENAME }}
+      - name: Upload PDF file
+        uses: actions/upload-artifact@v4
+        with:
+          name: latex-pdf
+          path: ${{ vars.SAVING_FILENAME }}.pdf
+          overwrite: true
+          if-no-files-found: error
+  commit_current_repo:
+    strategy:
+      matrix:
+        repo_details:
+          - name: ${{ github.repository }}
+            path: current-repo
+          - name: savindi-wijenayaka/savindi-wijenayaka.github.io
+            path: public-repo
+            secret_name: REPO_WRITE_ACCESS
+          - name: savindi-wijenayaka/savindi-wijenayaka-v2.github.io
+            path: private-repo
+            secret_name: REPO_WRITE_ACCESS
+
+    name: Add and commit to the given repository
+    runs-on: ubuntu-latest
+    needs: compile_latex
+    steps:
+    - name: Checkout main branch
+      env:
+        repo_token: ${{ (matrix.repo_details.secret_name) && (secrets[matrix.repo_details.secret_name]) || (github.token) }}
+      uses: actions/checkout@v4
+      with:
+        repository: ${{ matrix.repo_details.name }}
+        ref: main
+        path: ${{ matrix.repo_details.path }}
+        token: ${{ env.repo_token }}
+    - name: Download artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: latex-pdf
+    - name: Test downloaded artifact
+      run: ls -R
+    - name: Add and commit to main
+      run: | 
+        cd ${{ matrix.repo_details.path }}
+        mv $GITHUB_WORKSPACE/${{ vars.SAVING_FILENAME }}.pdf public/
+        git config --global user.name 'workflow-bot'
+        git config --global user.email 'workflow-bot@savindi-wijenayaka.github.io'
+        git add public/${{ vars.SAVING_FILENAME }}.pdf
+        git commit -m "Update CV"
+        git push

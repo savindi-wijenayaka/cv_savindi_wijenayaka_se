@@ -1,0 +1,222 @@
+\documentclass[12pt,a4paper,withhyper]{altacv}
+% \justifying
+
+%% AltaCV uses the fontawesome5 and academicons fonts
+%% and packages.
+%% See http://texdoc.net/pkg/fontawesome5 and http://texdoc.net/pkg/academicons for full list of symbols. You MUST compile with XeLaTeX or LuaLaTeX if you want to use academicons.
+% 2.54 cm
+% Change the page layout if you need to
+\geometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+
+\sloppy
+% \hyphenpenalty=100
+% \usepackage[none]{hyphenat}
+
+% The paracol package lets you typeset columns of text in parallel
+% \usepackage{paracol}
+% \usepackage{setspace}
+
+% Change the font if you want to, depending on whether
+% you're using pdflatex or xelatex/lualatex
+\ifxetexorluatex{}
+  % If using xelatex or lualatex:
+  \setmainfont{Roboto Slab}
+  \setsansfont{Lato}
+  \renewcommand{\familydefault}{\sfdefault}
+\else
+  % If using pdflatex:
+  \usepackage[rm]{roboto}
+  \usepackage[defaultsans]{lato}
+  % \usepackage{sourcesanspro}
+  \renewcommand{\familydefault}{\sfdefault}
+\fi
+
+% Change the colours if you want to
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{555555}
+\definecolor{DarkPastelBlue}{HTML}{083f5d}
+\definecolor{PastelBlue}{HTML}{0b4f70}
+\colorlet{name}{black}
+\colorlet{tagline}{PastelBlue}
+\colorlet{heading}{DarkPastelBlue}
+\colorlet{headingrule}{DarkPastelBlue}
+\colorlet{subheading}{PastelBlue}
+\colorlet{accent}{PastelBlue}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+
+% Change some fonts, if necessary
+\renewcommand{\namefont}{\huge\rmfamily\bfseries}
+\renewcommand{\personalinfofont}{\footnotesize}
+\renewcommand{\cvsectionfont}{\Large\rmfamily\bfseries}
+\renewcommand{\cvsubsectionfont}{\large\bfseries}
+
+
+% Change the bullets for itemize and rating marker
+% for \cvskill if you want to
+\renewcommand{\itemmarker}{{\small\textbullet}}
+\renewcommand{\ratingmarker}{\faCircle}
+
+% Contains your publications
+% \addbibresource{publications.bib}
+
+\begin{document}
+\name{Savindi Wijenayaka}
+\tagline{Software Engineer \& Researcher}
+%% You can add multiple photos on the left or right
+% \photoR{3cm}{profile-photo}
+
+\personalinfo{%
+  {
+  \printinfo{\faPhone}{+64 22 453 8372}
+  \printinfo{\faAt}{savindi.narmada@gmail.com}[mailto:savindi.narmada@gmail.com]
+  \printinfo{\faMapMarker*}{Auckland, New Zealand}\\
+  \printinfo{\faGlobe}{savindi.com}[https://savindi.com]
+  \printinfo{\faLinkedin}{linkedin.com/in/savindi}[https://linkedin.com/in/savindi]
+  \printinfo{\faMedium}{savindi-wijenayaka.medium.com}[https://savindi-wijenayaka.medium.com]
+  }
+}
+
+\makecvheader{}
+
+\medskip
+
+\cvsection{Summary}
+
+Software Engineer with over two years of industry experience designing, developing, and deploying scalable, production-grade backend systems and cloud-native applications. PhD research focused on developing algorithms and computational quantification pipelines integrating deep learning and advanced mathematics. Brings 6+ years of experience in PythonBrings 6+ years of experience in Python, along with extensive work across modern ML frameworks, containerisation, orchestration, and CI/CD pipelines. Focused on delivering reliable, efficient, and maintainable software solutions that integrate AI components where needed.
+
+\medskip
+
+\cvsection{Experience}
+
+\cvevent{Machine Learning Engineer}{\href{http://www.wso2.com}{WSO2} $\cdot$ Full-time}{Sept 2020 - Nov 2021}{Colombo, Sri Lanka} 
+WSO2 is one of the world's leading open-source integration vendors. Choreo is its latest product, providing an AI-enhanced integrated platform as a service.
+\medskip
+
+\begin{itemize}
+\item Engineered and deployed the initial phase of Choreo's AI-assisted test generation service, developing Flask APIs and orchestrating deployment with Kubernetes and Azure DevOps pipelines, covering end-to-end development and CI/CD.
+\item Co-architected and implemented Choreo’s AI Anomaly Detection system on Azure using Ballerina (strongly typed language) and Python, integrating microservices via event-driven architecture, and ensuring secure, scalable cloud-native deployment. Led the design of the alerting pipeline, including suppression policies and metric correlation.
+\item Diagnosed and resolved a critical memory leak in the Choreo's Ballerina Language Server using JMeter and Eclipse Memory Analyzer (MAT), significantly improving backend service performance and optimizing resource utilization.
+\item Automated Choreo’s performance testing by building a Python library (using KQL, Seaborn) and Azure DevOps pipeline for system metrics collection and analysis, enhancing monitoring and observability
+\end{itemize}
+
+\divider{}
+
+\cvevent{Software Research Engineer}{\href{https://www.pearson.com/}{Pearson} $\cdot$ Internship}{Sept 2018 - Sept 2019}{Colombo, Sri Lanka}   % chktex 8
+Pearson is a leading Education provider, offering curriculum materials, multimedia learning tools, and testing programs to help educate people worldwide.
+\medskip
+\begin{itemize}
+    \item Designed and developed microservice-ready backend systems for emotion and speech analysis at Pearson, integrating deep learning models (Keras, TensorFlow, Kaldi) with RESTful APIs using Python, Flask, and Django, and deploying via Gunicorn, Nginx, and automated Ansible workflows.
+
+    \item Built a Q\&A chatbot service for Pearson books and materials, using AllenNLP and BiDAF, later extending it with fine-tuned BERT and GPT-2 models, wrapped as a Django REST API and deployed with Ansible, supporting modular deployment workflows.
+
+    \item Developed a flashcard classification service using ULMFiT, LSTM, and GRU to automatically categorise flashcards created by students or the system, deployed via Django REST framework.
+
+    \item Evaluated and tested NoSQL and relational database migration strategies (MongoDB, MSSQL, MySQL) and conducted performance testing on ScaleOut State Servers within AWS EC2 environments.
+
+\end{itemize}
+
+\medskip
+
+\cvsection{Education}
+
+\cvevent{Ph.D. in Bioengineering \small{(under examination)}}{University of Auckland}{Dec 2021 - May 2025}{Auckland, New Zealand}  
+
+An interdisciplinary computational framework was engineered using biomedical imaging, deep learning, and applied mathematics to enable automated, scalable quantification and modelling of 3D gastric microstructure.
+
+\begin{itemize}
+    \item Built an attention-based semantic segmentation model for tissue layer classification, performing ablation studies and improving efficiency by over 40 hours per dataset.
+    \item Developed a Python-based 3D tissue quantification pipeline using numerical methods, delivering reproducible metrics across 20+ micro-CT samples.
+    \item Engineered a multi-study computational model integrating geometric and structural data from 8 experiments to support future in-silico simulations.
+    \item Conducted biological and imaging workflows to collect and prepare datasets for analysis, standardising tissue preparation and imaging protocols across 15 experimental trials.
+\end{itemize}
+% \begin{itemize}
+%     \item Engineered a semantic segmentation model to distinguish gastric tissue layers, integrating multiscale channel and spatial attention concepts, implementing numerous ablation studies, and saving over 40 hours per dataset.
+%     \item Developed a robust three-dimensional gastric tissue quantification framework using advanced mathematical techniques in Python; delivered precise measurements from 20+ tissue samples, establishing the first benchmark for future research.
+%     \item Developed a comprehensive computational model compiling crucial geometric information alongside quantification details sourced from 8 distinct experiments, enabling future in-silico experiments.
+%     \item Conducted biological experiments to collect and prepare rodent stomachs for micro CT imaging, resulting in a streamlined process that enhanced sample quality and consistency across 15 experimental trials.
+% \end{itemize}
+
+\divider{}
+
+\cvevent{B.Sc. (Hons.) in Software Engineering}{University of Kelaniya}{Feb 2016 - Mar 2020}{Kelaniya, Sri Lanka}   % chktex 8
+\begin{itemize}
+    \item Specialised in Data Science and Net-centric application development
+    \item Attained a GPA of 3.96 out of 4.00, obtaining a First Class.
+\end{itemize}
+
+\medskip
+
+% % \pagebreak
+% \cvsection{Certifications}
+
+% \begin{itemize}
+%     \item \cvevent{AI for Medical Diagnosis}{DeepLearning.AI}{May 2021}{}
+%     \item \cvevent{Deep Learning Specialisation}{DeepLearning.AI}{Dec 2020}{}
+%     \item \cvevent{TensorFlow Developer Specialisation}{DeepLearning.AI}{July 2020}{}
+% \end{itemize}
+
+\medskip
+
+\cvsection{Technical Skills}
+\begin{itemize}
+    \item \textbf{Languages \& Frameworks:} Java (Spring Boot), Python (Flask, Django, Pytorch, Keras), Ballerina, Bash
+    \item \textbf{Backend \& APIs:} RESTful APIs, gRPC, Event-Driven Integration
+    \item \textbf{Cloud Platforms \& DevOps:} Azure (e.g., Logic Apps, Event Hubs, Functions, DevOps), Kubernetes, Docker, CI/CD, AWS, Ansible, Linux
+    \item \textbf{Databases \& Data Handling:} Kusto Query Language (KQL), MongoDB, MSSQL, MySQL, ADX, DVC,
+    \item \textbf{Tools \& Methodologies:} Git, Agile, Performance Monitoring (Seaborn, Plotly, JMeter), Debugging (Eclipse MAT), Analysis (Numpy, Pandas), Testing (Unittest)
+    \item \textbf{Specialized Expertise:} Deep Learning (Vision \& NLP)
+\end{itemize}
+
+\medskip
+
+\cvsection{Knowledge Sharing \& Technical Outreach}
+\begin{itemize}
+    \item Member of the teaching team for Code In Place 2021, an online Python course offered by Stanford University, contributing to global tech education initiatives.
+    \item Served as a guest speaker for multiple technical webinars (organized by IEEE and DeepLearning.AI), effectively communicating complex topics to broader audiences.
+    \item  Authored technical articles on Medium covering practical applications of cloud-native microservices (Kubernetes, Docker, Azure), conceptual topics (Kubernetes internals, JVM, CNNs), and automated CI/CD pipelines (GitHub Actions, Azure ARM templates), demonstrating a passion for knowledge sharing.
+\end{itemize}
+
+\medskip
+
+\cvsection{Achievements}
+\begin{itemize}
+    % Technical / Academic
+    \item \textbf{1st Place (2022)} and \textbf{2nd Place (2024)} in the international SPARC FAIR Codeathon, representing the University of Auckland, organised by the SPARC Data and Resource Centre and the NIH.
+    \item \textbf{4th Place} in DataStorm 2020 Datathon, organised by Octave (JKH) and University of Moratuwa.
+    \item \textbf{1st Runner-Up} in National Youth Software Competition 2017, organised by UNDP Sri Lanka.
+    \item \textbf{Dean’s List Honouree}, recognised in all four academic years of the B.Sc. programme.
+
+    % Leadership & Management
+    \item \textbf{Vice President} of Marketing \& Communications at AIESEC in the University of Kelaniya in 2018, contributing to local chapter growth.
+
+    % % Sports & Extracurricular
+    % \item \textbf{National and University Colours} recipient, \textbf{Black Belt} Karate player and \textbf{Women's Captain} in University Karate Team; won multiple national and inter-university medals (2016–2018).
+
+    % \item \textbf{Gold Medalist} in Chess at Four Nations Championship 2019, organised by Pearson.
+    % \item Represented school at the national level in Karate, Carrom, Kabaddi, and Army Cadet competitions, while also serving as Junior Prefect, Senior Prefect, and Karate Captain.
+
+\end{itemize}
+
+
+
+\medskip
+
+
+
+% \cvsection{Languages}
+
+% \cvskill{English}{4}
+% \cvskill{Sinhala}{5}
+
+% \medskip
+% \cvsection{References}
+% \textit{Available upon request.}
+
+% \vfill
+% \begin{flushright}
+% \flushright
+% \footnotesize{\emph{Last updated: ~\today }}
+% \end{flushright}
+
+\end{document}
